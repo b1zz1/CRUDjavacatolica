@@ -3,10 +3,11 @@ package entities;
 public class Client {
 
 	private static String name;
-	private String address;
+	private static String birth;
+	private static String address;
 	private static int CPF;
-	private String profession;
-	private double monthlyIncome;
+	private static String profession;
+	private static double monthlyIncome;
 	
 	//constructor for Client
 	public Client(String name, String address, int CPF, String profession, double monthlyIncome) {
@@ -20,31 +21,49 @@ public class Client {
 	public static String getName() {
 		return name;
 	}
+	
 	public static void setName(String name) {
 		Client.name = name;
 	}
-	public String getAddress() {
+	
+	public static String getBirth() {
+		return birth;
+	}
+	
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
+	
+	public static String getAddress() {
 		return address;
 	}
+	
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
 	public static int getCPF() {
 		return CPF;
 	}
-	public void setCPF(int CPF) {
-		this.CPF = CPF;
+	
+	public static void setCPF(int CPF) {
+		Client.CPF = CPF;
 	}
-	public String getProfession() {
+	
+	public static String getProfession() {
 		return profession;
 	}
+	
 	public void setProfession(String profession) {
 		this.profession = profession;
 	}
-	public double getMonthlyIncome() {
+	
+	public static double getMonthlyIncome() {
 		return monthlyIncome;
 	}
+	
 	public void setMonthlyIncome(double monthlyIncome) {
 		this.monthlyIncome = monthlyIncome;
 	}
+
 }
