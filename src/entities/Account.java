@@ -7,8 +7,7 @@ public class Account {
 	private double moneyIn = 0;
 	private double debt = 0;
 	private int accountNumber;
-	//1 - Conta corrente | 2 - Poupança | 3 - Conta salario
-	private static int accountType;
+	private static String accountType;
 	
 	public Account(String accountHolder, String password) {
 		this.accountHolder = accountHolder;
@@ -54,11 +53,11 @@ public class Account {
 		this.accountNumber = accountNumber;
 	}
 
-	public static int getAccountType() {
+	public static String getAccountType() {
 		return accountType;
 	}
 
-	public void setAccountType(int accountType) {
+	public void setAccountType(String accountType) {
 		this.accountType = accountType;
 	}
 

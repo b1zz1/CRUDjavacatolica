@@ -17,14 +17,12 @@ public class AccountDAO {
 		String SQLinput = "insert into account(account_holder, account_password, account_type)"
 				+ "values"
 				+ "(?, ?, ?);";
-		
 		try {
 			PreparedStatement stmt = DbConnection.getConnection().prepareStatement(SQLinput);
 			
 			stmt.setString(1, Account.getAccountHolder());
 			stmt.setString(2, Account.getPassword());
-			stmt.setInt(3, Account.getAccountType());
-
+			stmt.setString(3, Account.getAccountType());
 			stmt.execute();
 			
 		    int rowsInserted = stmt.executeUpdate();
