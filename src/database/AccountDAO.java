@@ -13,7 +13,7 @@ public class AccountDAO {
 		this.conn = DbConnection.getConnection();
 	}
 	//accountAdd() will create a new account when invoked
-	public static void accountAdd() {
+	public static void accountADD() {
 		String SQLinput = "insert into account(account_holder, account_password, account_type)"
 				+ "values"
 				+ "(?, ?, ?);";
@@ -23,7 +23,6 @@ public class AccountDAO {
 			stmt.setString(1, Account.getAccountHolder());
 			stmt.setString(2, Account.getPassword());
 			stmt.setString(3, Account.getAccountType());
-			stmt.execute();
 			
 		    int rowsInserted = stmt.executeUpdate();
 		    if(rowsInserted > 0) {

@@ -16,7 +16,7 @@ public class Main {
 		
 		String nameInput, passwordInput;
 
-		int menuInput, viewInput, typeInput; 
+		int menuInput, viewInput, typeInput, numberDel; 
 		
 		
 		System.out.print("====== What do you want to do? ======"
@@ -26,6 +26,7 @@ public class Main {
 				+ "|| 4 - Delete account || \n "
 				+ "Input: ");
 		menuInput = sc.nextInt();
+		sc.nextLine();
 		
 		switch(menuInput) {
 			case 1:
@@ -35,11 +36,9 @@ public class Main {
 				System.out.println("Account holder's name: ");
 				nameInput = sc.nextLine();
 				account.setAccountHolder(nameInput);
-				sc.nextLine();
 				System.out.println("Set your password: ");
 				passwordInput = sc.nextLine();
 				account.setPassword(passwordInput);
-				
 				System.out.println("Set your account type\n"
 						+ "1 - Checking Account\n"
 						+ "2 - Money Market Account(MMA)\n"
@@ -57,17 +56,21 @@ public class Main {
 						account.setAccountType("CD");
 						break;
 				}
-				AccountDAO.accountAdd();
+				AccountDAO.accountADD();
 				break;
 			case 3:
-				System.out.println("Choose an account by inserting its account number, leave blank to see all accounts : ");
+				System.out.println("Choose an account by inserting its account number: ");
 				viewInput = sc.nextInt();
-				AccountVIEW.setViewNumber(viewInput);
+				AccountSELECT.setViewNumber(viewInput);
 				
-				AccountVIEW.accountVIEW();
+				AccountSELECT.accountSELECT();
 				break;
 			case 4:
+				System.out.println("Please insert the account number for deletion: ");
+				numberDel = sc.nextInt();
+				AccountDELETE.setNumberDel(numberDel);
 				
+				AccountDELETE.accountDEL();
 				break;
 		}
 		/*

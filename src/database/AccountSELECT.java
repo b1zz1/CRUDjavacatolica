@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AccountVIEW {
+public class AccountSELECT {
 
 	private Connection conn;
 	private static int viewNumber;
@@ -14,22 +14,17 @@ public class AccountVIEW {
 		return viewNumber;
 	}
 	public static void setViewNumber(int viewNumber) {
-		AccountVIEW.viewNumber = viewNumber;
+		AccountSELECT.viewNumber = viewNumber;
 	}
 	
-	public AccountVIEW(){
+	public AccountSELECT(){
 		this.conn = DbConnection.getConnection();
 	}
+	//this function will print the choosen account when invoked
+	public static void accountSELECT() {
 	
-	public static void accountVIEW() {
-	
-	String SQLinput;
-	
-		if(viewNumber > 1) {
-			SQLinput = "SELECT * FROM account WHERE account_number = ?";
-		}else {
-			SQLinput = "SELECT * FROM account";
-		}
+		String SQLinput = "SELECT * FROM account WHERE account_number = ?";
+		
 		try {
 		PreparedStatement stmt = DbConnection.getConnection().prepareStatement(SQLinput);
 		ResultSet rs = null;
@@ -40,9 +35,11 @@ public class AccountVIEW {
 		while(rs.next()) {
 			String accountHolder = rs.getString("account_holder");
 			int accountNumber = rs.getInt("account_number");
+			String accountType = rs.getString("account_type");
 			
 			System.out.println("Name: "+accountHolder+"\n");
 			System.out.println("Account Number: "+accountNumber+"\n");
+			System.out.println("Account Type: "+accountType+"\n");
 		}
 		stmt.close();
 	}
