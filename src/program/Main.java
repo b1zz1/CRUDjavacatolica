@@ -8,23 +8,28 @@ import entities.*;
 public class Main {
 
 	public static void main(String[] args) {
-		
+
 		Scanner sc = new Scanner(System.in);
 		Connection conn = DbConnection.getConnection();
-		
 		Account account = new Account(null, null);
 		
 		String nameInput, passwordInput;
 
-		int menuInput, viewInput, typeInput, numberDel, altNum; 
+		int menuInput, viewInput, typeInput, numberDel, altNum, x = 0; 
 		
-		
-		System.out.print("=What do you want to do?=\n"
-				+ "|| 1 - Sign in        ||\n"
-				+ "|| 2 - Register       ||\n"
-				+ "|| 3 - View data      ||\n"
-				+ "|| 4 - Delete account ||\n"
-				+ "|| 5 - Edit account   ||\n"
+	while(x == 0) {	
+		System.out.print("===== What do you want to do? =====\n"
+				+ " ||                              ||\n"
+				+ " || 1 - Sign in[NOT IMPLEMENTED] ||\n"
+				+ " || 2 - Register                 ||\n"
+				+ " || 3 - View data                ||\n"
+				+ " || 4 - Delete account           ||\n"
+				+ " || 5 - Edit account             ||\n"
+				+ " || 6 - Add balance              ||\n"
+				+ " || 7 - Transfer[NOT IMPLEMENTED]||\n"
+				+ " || 8 - View balance             ||\n"
+				+ " || 9 - Exit program             ||\n"
+				+ " =================================\n"
 				+ "Input: ");
 		menuInput = sc.nextInt();
 		sc.nextLine();
@@ -103,8 +108,31 @@ public class Main {
 				}
 				AccountALTER.accountEdit();
 				break;
+			case 6:
+				System.out.println("Please insert the account number to receive the money: ");
+				altNum = sc.nextInt();
+				AccountDAO.setAccountSelect(altNum);
+				System.out.println("How much do you want to add?: ");
+				double balanceAdd = sc.nextDouble();
+				account.setMoneyIn(balanceAdd);
+				AccountDAO.balanceADD();
+				break;
+			case 7:
+				
+				break;
+			case 8:
+				System.out.println("Insert the account number for balance check: ");
+				int numberCheck = sc.nextInt();
+				AccountSELECT.setViewNumber(numberCheck);
+				
+				AccountSELECT.balanceVIEW();
+				break;
+			case 9:
+				x = 1;
+				break;
 			default:
-				System.out.println("Please insert a value between 1 and 5");
+				System.out.println("Please insert a value between 1 and 5\n");
+			}
 		}
 		/*
 		System.out.print("CPF: ");
@@ -116,6 +144,7 @@ public class Main {
 		}
 		Client.setCPF(CPFInput);
 		*/
+		System.out.println("System off. Goodbye!");
 		DbConnection.closeConnection();
 		sc.close();
 	}

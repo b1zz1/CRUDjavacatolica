@@ -4,7 +4,7 @@ public class Account {
 
 	private static String accountHolder;
 	private static String password;
-	private double moneyIn = 0;
+	private static double moneyIn = 0;
 	private double debt = 0;
 	private int accountNumber;
 	private static String accountType;
@@ -30,7 +30,7 @@ public class Account {
 		this.password = password;
 	}
 
-	public double getMoneyIn() {
+	public static double getMoneyIn() {
 		return moneyIn;
 	}
 
@@ -60,7 +60,7 @@ public class Account {
 	public void setAccountType(String accountType) {
 		this.accountType = accountType;
 	}
-
+	
 }
 
 

@@ -49,4 +49,27 @@ public class AccountSELECT {
 		}
 	}
 
+		public static void balanceVIEW() {
+			
+			String SQLinput = "SELECT account_moneyIn FROM account WHERE account_number = ?";
+			
+			try {
+			PreparedStatement stmt = DbConnection.getConnection().prepareStatement(SQLinput);
+			ResultSet rs = null;
+			
+			stmt.setInt(1, viewNumber);
+			
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				double moneyIn = rs.getDouble("account_moneyIn");
+
+				System.out.println("Balance:" +moneyIn+"\n");
+			}
+			stmt.close();
+		}
+		catch(SQLException e) {
+			throw new RuntimeException(e);
+			
+			}
+		}
 }
